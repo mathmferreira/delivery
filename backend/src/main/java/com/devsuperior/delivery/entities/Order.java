@@ -17,14 +17,13 @@ import javax.persistence.Table;
 
 import com.devsuperior.delivery.entities.enums.OrderStatus;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_order")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @SuppressWarnings("serial")
 public class Order implements Serializable {
@@ -49,5 +48,14 @@ public class Order implements Serializable {
 	@JoinColumn(name = "order_id"), inverseJoinColumns = 
 	@JoinColumn(name = "product_id"))
 	private Set<Product> products = new HashSet<>();
+
+	public Order(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status) {
+		this.id = id;
+		this.address = address;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.moment = moment;
+		this.status = status;
+	}
 
 }
