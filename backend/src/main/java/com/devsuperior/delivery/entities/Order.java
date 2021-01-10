@@ -57,5 +57,9 @@ public class Order implements Serializable {
 		this.moment = moment;
 		this.status = status;
 	}
+	
+	public Double getTotal() {
+		return products.stream().mapToDouble(Product::getPrice).sum();
+	}
 
 }
